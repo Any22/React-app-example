@@ -1,12 +1,12 @@
 const express = require('express');
 const cors = require('cors');
-const bodyparser = require('body-parser')
+
 const fs = require('fs')
 const app = express()
 app.use(cors()) 
 
 
-const melbourneData = JSON.parse(fs.readFileSync('./server//melbourne.json')).map(
+const melbourneData = JSON.parse(fs.readFileSync('./server/melbourne.json')).map(
   (melbourneRecord) => ({
     id: melbourneRecord.id,
     name: melbourneRecord.name,
@@ -16,7 +16,7 @@ const melbourneData = JSON.parse(fs.readFileSync('./server//melbourne.json')).ma
   }),
 )
 
-app.get('/Melbourne', (_, res) => {
+app.get('/melbourne', (_, res) => {
   res.json(melbourneData)
 })
 
